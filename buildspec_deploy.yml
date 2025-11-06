@@ -18,10 +18,10 @@ phases:
     commands:
       - echo Build completed on `date`
       - mkdir -p ~/.ssh
-      - aws s3 cp s3://godwin-terraform-state-bucket198/progee1.pem ~/.ssh/id_rsa
+      - aws s3 cp s3://godwin-terraform-state-bucket198/prefer.pem ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
       - ls
-      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@3.237.64.40 "mkdir -p app"
+      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@3.239.69.175 "mkdir -p app"
       - echo Copying files to server...
-      - scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r backend/* ubuntu@3.237.64.40:app
-      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@3.237.64.40 "sudo apt-get update -y && sudo apt-get install -y python3-venv && python3 -m venv app/venv && source app/venv/bin/activate && pip install --upgrade pip && pip install -r app/requirements.txt && pm2 start app/src/server.py --name todo-api --interpreter ./app/venv/bin/python3 || pm2 restart todo-api && pm2 save"
+      - scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r backend/* ubuntu@3.239.69.175:app
+      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@3.239.69.175 "sudo apt-get update -y && sudo apt-get install -y python3-venv && python3 -m venv app/venv && source app/venv/bin/activate && pip install --upgrade pip && pip install -r app/requirements.txt && pm2 start app/src/server.py --name todo-api --interpreter ./app/venv/bin/python3 || pm2 restart todo-api && pm2 save"
